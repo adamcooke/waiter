@@ -34,6 +34,7 @@ func pollRedis() (bool, error) {
 		DialTimeout: 2 * time.Second,
 		ReadTimeout: 2 * time.Second,
 	})
+	defer rdb.Close()
 
 	_, err = rdb.Ping(context.TODO()).Result()
 	if err != nil {
