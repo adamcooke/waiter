@@ -9,7 +9,7 @@ It supports the following services:
 
 ## Usage
 
-This is most useful when used as an init container within a Kubernetes pod. For example:
+This is most useful when used as an init container within a Kubernetes pod. You can add individual init containers for each service or configure multiple services within the same container to reduce (the small) overhead in starting individual containers.
 
 ```yaml
 initContainers:
