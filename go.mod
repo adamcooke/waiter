@@ -1,4 +1,4 @@
-module github.com/adamcooke/wait-for
+module github.com/adamcooke/waiter
 
 go 1.20
 

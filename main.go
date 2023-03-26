@@ -8,9 +8,9 @@ import (
 	"time"
 )
 
-type ServicePollFunction = func() (bool, error)
+type servicePollFunction = func() (bool, error)
 
-var Services = map[string](ServicePollFunction){
+var services = map[string](servicePollFunction){
 	"mysql": pollMySQL,
 	"redis": pollRedis,
 }
@@ -23,15 +23,15 @@ func main() {
 		os.Exit(1)
 	}
 
-	services := getEnvVar("SERVICES", "")
-	if services == "" {
+	desiredServices := getEnvVar("SERVICES", "")
+	if desiredServices == "" {
 		fmt.Printf("SERVICES is not set\n")
 		os.Exit(1)
 	}
 
-	servicesArray := strings.Split(services, ",")
+	servicesArray := strings.Split(desiredServices, ",")
 	for _, serviceName := range servicesArray {
-		servicePollFunc, ok := Services[serviceName]
+		servicePollFunc, ok := services[serviceName]
 		if !ok {
 			fmt.Printf("Service '%s' is not supported\n", serviceName)
 			os.Exit(1)
@@ -46,7 +46,7 @@ func main() {
 	}
 }
 
-func pollService(interval int, servicePollFunc ServicePollFunction) error {
+func pollService(interval int, servicePollFunc servicePollFunction) error {
 	for {
 		retry, err := servicePollFunc()
 		if retry == false && err == nil {

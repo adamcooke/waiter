@@ -38,6 +38,6 @@ dockers:
     goos: linux
     goarch: amd64
     image_templates:
-    - "ghcr.io/adamcooke/wait-for:{{ .Tag }}"
-    - "ghcr.io/adamcooke/wait-for:v{{ .Major }}"
-    - "ghcr.io/adamcooke/wait-for:latest"
+    - "ghcr.io/adamcooke/waiter:{{ .Tag }}"
+    - "ghcr.io/adamcooke/waiter:v{{ .Major }}"
+    - "ghcr.io/adamcooke/waiter:latest"

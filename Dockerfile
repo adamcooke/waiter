@@ -1,3 +1,3 @@
 FROM scratch
-ENTRYPOINT ["/wait-for"]
-COPY wait-for /
+ENTRYPOINT ["/waiter"]
+COPY waiter /
