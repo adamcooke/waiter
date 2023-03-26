@@ -7,7 +7,7 @@ It supports the following services:
 - **MySQL** - wait for a MySQL server to become available and for a specific table to have been created.
 - **Redis** - wait for a Redis server to be available.
 
-## Usage
+## Usage
 
 This is most useful when used as an init container within a Kubernetes pod. For example:
 
