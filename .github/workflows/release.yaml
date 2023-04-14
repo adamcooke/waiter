@@ -20,6 +20,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     if: needs.release-please.outputs.release_created
+    needs: [release-please]
     steps:
       - uses: actions/checkout@v3
         with:
